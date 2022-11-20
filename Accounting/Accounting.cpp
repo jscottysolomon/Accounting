@@ -5,6 +5,8 @@
 #include <wx/wx.h>
 #endif
 
+#include"src/companyMain.h"
+
 class MyApp : public wxApp
 {
 public:
@@ -99,10 +101,12 @@ void MyFrame::OnAbout(wxCommandEvent& event)
 
 void MyFrame::OnOpen(wxCommandEvent& event)
 {
-    //wxPOPUP_WINDOW* search = new wxPOPUP_WINDOW;
+    companyMain* view = new companyMain();
+    view->Show(true);
 }
 
 void MyFrame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
 }
+
