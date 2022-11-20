@@ -1,4 +1,8 @@
-// For compilers that support precompilation
+/**
+* @author Scotty Solomon
+* @version 1.0
+*/
+
 #include <wx/wxprec.h>
 
 #ifndef WX_PRECOMP
@@ -71,17 +75,12 @@ MyFrame::MyFrame()
     //Addding menus to menuBars
     wxMenuBar* menuBar = new wxMenuBar;
 
-    menuBar->Append(menuFile, "&FILE");
-    menuBar->Append(menuOptions, "&ACCOUNTANT");
-    menuBar->Append(menuEmployee, "&EMPLOYEES");
-    menuBar->Append(menuHelp, "&HELP");
-
-
+    menuBar->Append(menuFile, "&FIle");
+    menuBar->Append(menuOptions, "&Accountant");
+    menuBar->Append(menuEmployee, "&Employees");
+    menuBar->Append(menuHelp, "&Help");
 
     SetMenuBar(menuBar);
-
-    //CreateStatusBar();
-    //SetStatusText("Welcome to wxWidgets!");
 
     Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
     Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
@@ -101,7 +100,7 @@ void MyFrame::OnAbout(wxCommandEvent& event)
 
 void MyFrame::OnOpen(wxCommandEvent& event)
 {
-    companyMain* view = new companyMain();
+    companyMain* view = new companyMain(this);
     view->Show(true);
 }
 

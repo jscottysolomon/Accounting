@@ -1,3 +1,8 @@
+/**
+* @author Scotty Solomon
+* @version 1.0
+*/
+
 #include <wx/wxprec.h>
 
 #ifndef WX_PRECOMP
@@ -12,9 +17,14 @@ enum {
 	ID_IMPORT = 12
 };
 
-companyMain::companyMain() : wxFrame(nullptr, wxID_ANY, "Accounting") {
-	wxMenu* menuBanking = new wxMenu;
+companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accounting") {
 
+	//Accountant Menu
+	//wxMenu* menuAccountant = new wxMenu;
+	
+
+	//Banking Menu
+	wxMenu* menuBanking = new wxMenu;
 	menuBanking->Append(ID_BCENTER, "&Banking Center\tCtrl-C");
 	menuBanking->AppendSeparator();
 	menuBanking->Append(ID_RECONCILE, "&Reconcile\tCtrl-R");
@@ -26,8 +36,16 @@ companyMain::companyMain() : wxFrame(nullptr, wxID_ANY, "Accounting") {
 	menuBar->Append(menuBanking, "&Banking");
 
 	SetMenuBar(menuBar);
+
+	Bind(wxEVT_MENU, &companyMain::onImport, this, ID_IMPORT);
 }
 
-companyMain::~companyMain()
+void companyMain::onImport(wxCommandEvent& event)
 {
+	wxFileDialog* iFile = new wxFileDialog(this, "Select a file to import");
+	int ret = iFile->ShowModal();
+
+	if (ret == wxID_OK) {
+		//TODO: parse file
+	}
 }

@@ -5,8 +5,8 @@
 class companyMain : public wxFrame 
 {
 public:
-	companyMain();
-	~companyMain();
+	companyMain(wxFrame* parent);
+	//~companyMain();
 private:
 	void onImport(wxCommandEvent& event);
 };
