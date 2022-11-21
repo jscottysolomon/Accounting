@@ -30,7 +30,7 @@
     <ClInclude Include="Accounting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="searchPopUp.h">
+    <ClInclude Include="src\searchPopUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\companyMain.h">
@@ -41,7 +41,7 @@
     <ClCompile Include="Accounting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="searchPopUp.cpp">
+    <ClCompile Include="src\searchPopUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\companyMain.cpp">

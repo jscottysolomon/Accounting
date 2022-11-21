@@ -146,14 +146,14 @@
     <ClInclude Include="Accounting.h" />
     <ClInclude Include="src\companyMain.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="searchPopUp.h" />
+    <ClInclude Include="src\searchPopUp.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Accounting.cpp" />
     <ClCompile Include="src\companyMain.cpp" />
-    <ClCompile Include="searchPopUp.cpp" />
+    <ClCompile Include="src\searchPopUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Accounting.rc" />

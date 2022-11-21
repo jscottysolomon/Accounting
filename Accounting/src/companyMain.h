@@ -9,6 +9,7 @@ public:
 	//~companyMain();
 private:
 	void onImport(wxCommandEvent& event);
+	void onBankCenter(wxCommandEvent& event);
 };
 
 #endif

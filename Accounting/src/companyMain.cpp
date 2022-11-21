@@ -25,7 +25,7 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 
 	//Banking Menu
 	wxMenu* menuBanking = new wxMenu;
-	menuBanking->Append(ID_BCENTER, "&Banking Center\tCtrl-C");
+	menuBanking->Append(ID_BCENTER, "&Banking Center\tCtrl-B");
 	menuBanking->AppendSeparator();
 	menuBanking->Append(ID_RECONCILE, "&Reconcile\tCtrl-R");
 	menuBanking->AppendSeparator();
@@ -38,6 +38,7 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 	SetMenuBar(menuBar);
 
 	Bind(wxEVT_MENU, &companyMain::onImport, this, ID_IMPORT);
+	Bind(wxEVT_MENU, &companyMain::onBankCenter, this, ID_BCENTER);
 }
 
 void companyMain::onImport(wxCommandEvent& event)
@@ -48,4 +49,8 @@ void companyMain::onImport(wxCommandEvent& event)
 	if (ret == wxID_OK) {
 		//TODO: parse file
 	}
+}
+
+void companyMain::onBankCenter(wxCommandEvent& event) {
+	wxPanel* bankCenter = new wxPanel();
 }
