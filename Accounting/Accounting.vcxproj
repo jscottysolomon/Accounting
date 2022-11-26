@@ -82,9 +82,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(SOCI_ROOT)\lib\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\soci-master\include;C:\libs\soci-master\include\soci;C:\libs\soci-master\include\soci\mysql;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SOCI_ROOT)\lib\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\soci-master\include;C:\libs\soci-master\include\soci;C:\libs\soci-master\include\soci\mysql;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -124,6 +128,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libsoci_core_4_1.lib;libsoci_empty_4_1.lib;libsoci_mysql_4_1.lib;soci_core_4_1.lib;soci_empty_4_1.lib;soci_mysql_4_1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +145,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libsoci_core_4_1.lib;libsoci_empty_4_1.lib;libsoci_mysql_4_1.lib;soci_core_4_1.lib;soci_empty_4_1.lib;soci_mysql_4_1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -153,6 +159,7 @@
   <ItemGroup>
     <ClCompile Include="Accounting.cpp" />
     <ClCompile Include="src\companyMain.cpp" />
+    <ClCompile Include="src\data\parseXML.cpp" />
     <ClCompile Include="src\searchPopUp.cpp" />
   </ItemGroup>
   <ItemGroup>

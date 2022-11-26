@@ -45,6 +45,7 @@ void companyMain::onImport(wxCommandEvent& event)
 {
 	wxFileDialog* iFile = new wxFileDialog(this, "Select a file to import");
 	int ret = iFile->ShowModal();
+	wxString path = iFile->GetPath();
 
 	if (ret == wxID_OK) {
 		//TODO: parse file

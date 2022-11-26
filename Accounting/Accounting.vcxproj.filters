@@ -47,6 +47,9 @@
     <ClCompile Include="src\companyMain.cpp">
       <Filter>Source Files\Company</Filter>
     </ClCompile>
+    <ClCompile Include="src\data\parseXML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Accounting.rc">
