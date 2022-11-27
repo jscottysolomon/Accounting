@@ -9,7 +9,7 @@
 #include <wx/xml/xml.h>
 #include <iostream>
 #include <stdio.h>
-#include "parseXML.h"
+#include "parseXML.hpp"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -19,12 +19,9 @@
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 
 #endif
 
-static std::vector<wxString> parseXML(wxString path){
+static std::vector<wxString> parseXML(wxFileDialog iFile){
 	wxXmlDocument xmlDoc;
 
-	if (!xmlDoc.Load(path)) {
-		//handle error
-	}
 
 
 

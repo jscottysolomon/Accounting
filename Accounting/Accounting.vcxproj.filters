@@ -36,7 +36,7 @@
     <ClInclude Include="src\companyMain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\data\parseXML.h">
+    <ClInclude Include="src\data\parseXML.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

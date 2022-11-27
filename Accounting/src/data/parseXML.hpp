@@ -2,7 +2,7 @@
 #ifndef PARSEXML_H
 #define PARSEXML_H
 
-static std::vector<wxString> parseXML(wxString wxString);
+static std::vector<wxString> parseXML(wxFileDialog iFile);
 #endif
 
 

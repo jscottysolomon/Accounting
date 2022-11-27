@@ -5,7 +5,7 @@
 
 #include <wx/wxprec.h>
 #include <vector>
-#include "data/parseXML.h"
+#include "data/parseXML.hpp"
 #include"companyMain.hpp"
 
 #ifndef WX_PRECOMP
@@ -58,14 +58,13 @@ void companyMain::onImport(wxCommandEvent& event)
 {
 	wxFileDialog iFile(this, "Select a file to import");
 	int ret = iFile.ShowModal();
-	wxString path = iFile.GetPath();
-	iFile.Close();
-	std::printf("test");
-
+	
 	if (ret == wxID_OK) {
-		//std::vector<wxString> data =
+		//TODO: Call parseXML()
 		
 	}
+
+	iFile.Close();
 }
 
 void companyMain::onBankCenter(wxCommandEvent& event) {
