@@ -4,12 +4,21 @@
 */
 
 #include <wx/wxprec.h>
+#include <vector>
+#include "data/parseXML.h"
+#include"companyMain.hpp"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
 
-#include"companyMain.h"
+#ifdef __WXMSW__
+#include <wx/msw/msvcrt.h>      // redefines the new() operator 
+#endif
+
+
+
+
 
 enum {
 	ID_BCENTER = 9,
@@ -20,8 +29,7 @@ enum {
 companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accounting") {
 
 	//Accountant Menu
-	//wxMenu* menuAccountant = new wxMenu;
-	
+	//wxMenu* menuAccountant = new wxMenu
 
 	//Banking Menu
 	wxMenu* menuBanking = new wxMenu;
@@ -31,7 +39,7 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 	menuBanking->AppendSeparator();
 	menuBanking->Append(ID_IMPORT, "Import File...\tCtrl-I");
 
-	wxMenuBar* menuBar = new wxMenuBar;
+	wxMenuBar*  menuBar = new wxMenuBar;
 
 	menuBar->Append(menuBanking, "&Banking");
 
@@ -41,17 +49,30 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 	Bind(wxEVT_MENU, &companyMain::onBankCenter, this, ID_BCENTER);
 }
 
+companyMain::~companyMain()
+{
+	Destroy();
+}
+
 void companyMain::onImport(wxCommandEvent& event)
 {
-	wxFileDialog* iFile = new wxFileDialog(this, "Select a file to import");
-	int ret = iFile->ShowModal();
-	wxString path = iFile->GetPath();
+	wxFileDialog iFile(this, "Select a file to import");
+	int ret = iFile.ShowModal();
+	wxString path = iFile.GetPath();
+	iFile.Close();
+	std::printf("test");
 
 	if (ret == wxID_OK) {
-		//TODO: parse file
+		//std::vector<wxString> data =
+		
 	}
 }
 
 void companyMain::onBankCenter(wxCommandEvent& event) {
 	wxPanel* bankCenter = new wxPanel();
+}
+
+void companyMain::OnClose(wxCloseEvent& event)
+{
+	Close(true);
 }

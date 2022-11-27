@@ -33,7 +33,10 @@
     <ClInclude Include="src\searchPopUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\companyMain.h">
+    <ClInclude Include="src\companyMain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\parseXML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

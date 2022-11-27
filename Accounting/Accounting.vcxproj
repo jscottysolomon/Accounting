@@ -150,8 +150,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Accounting.h" />
-    <ClInclude Include="src\companyMain.h" />
+    <ClInclude Include="src\companyMain.hpp" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="src\data\parseXML.h" />
     <ClInclude Include="src\searchPopUp.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />

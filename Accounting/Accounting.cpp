@@ -9,7 +9,15 @@
 #include <wx/wx.h>
 #endif
 
-#include"src/companyMain.h"
+#include"src/companyMain.hpp"
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+#ifdef __WXMSW__
+#include <wx/msw/msvcrt.h>
+#endif
+
 
 class MyApp : public wxApp
 {
@@ -73,7 +81,7 @@ MyFrame::MyFrame()
     menuEmployee->Append(REOCCURRING, "&Manage Reoccurring");
 
     //Addding menus to menuBars
-    wxMenuBar* menuBar = new wxMenuBar;
+    wxMenuBar* menuBar = new wxMenuBar; //delete ptr
 
     menuBar->Append(menuFile, "&FIle");
     menuBar->Append(menuOptions, "&Accountant");
@@ -90,6 +98,7 @@ MyFrame::MyFrame()
 
 void MyFrame::OnExit(wxCommandEvent& event)
 {
+    _CrtDumpMemoryLeaks();
     Close(true);
 }
 
