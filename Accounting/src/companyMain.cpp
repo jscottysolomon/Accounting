@@ -60,6 +60,25 @@ companyMain::~companyMain()
 
 /**
 * On selecting an xml file to import, the file is parased
+* 
+* .QBO file struture to retrieve tranactions:
+* 
+* <OFX>
+*	<SIGNONMSGSRSV1>
+*	<BANKMSGSRSV1>
+*		<STMTRNRS>
+*		<STMTRS>
+*			<CURDEF>
+*			<BANKACCTFROM>
+*			<BANKTRANLIST>
+*				<DTSTART>
+*				<DTEND>
+*				<STMTTRN>
+*					<TRNTYPE>
+*					<DTPOSTED>
+*					<TRNAMT>
+*					<FITID>
+*					<MEMO>
 */
 void companyMain::onImport(wxCommandEvent& event)
 {
@@ -76,22 +95,37 @@ void companyMain::onImport(wxCommandEvent& event)
 		wxXmlDocument xmlDoc;
 		xmlDoc.Load(iFile->GetPath());
 
+		if (xmlDoc.GetRoot()->GetName() != "OFX") {
+			ret = "";
+		}
+
+		//BANKMSGSRSV1
 		wxXmlNode* child = xmlDoc.GetRoot()->GetChildren();
+		child = child->GetNext();
 
-		//while (child) {
-		//	ret += child->GetName();
-		//	child->GetNext();
-		//}
+		//STMTTRNRS
+		wxXmlNode* c = child->GetChildren();
 
-		textBox->AppendText(child->GetName());
+		//stmtrs
+		wxXmlNode* transactions = c->GetChildren();
+		transactions = transactions->GetNext();
+		transactions = transactions->GetNext();
 
-		//XmlAttribute* attribute = child->GetAttributes();
-		//xtBox->AppendText(attribute->GetName());
+		//BANKTRANLIST
+		wxXmlNode* stmtrsChildren = transactions->GetChildren();
+		stmtrsChildren = stmtrsChildren->GetNext(); //bank info here <BANKACCTFROM>
+		stmtrsChildren = stmtrsChildren->GetNext();
+
+		wxXmlNode* bankListKids = stmtrsChildren->GetChildren();
+		bankListKids = bankListKids->GetNext();
+		bankListKids = bankListKids->GetNext();
+
+
+		textBox->AppendText(stmtrsChildren->GetName());
+
+
 
 		xmlDoc.Save(iFile->GetPath());
-
-
-		
 		
 	}
 	//textBox->AppendText(iFile->GetPath());
