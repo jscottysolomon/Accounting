@@ -8,6 +8,8 @@ public:
 	companyMain(wxFrame* parent);
 	~companyMain();
 private:
+	wxPanel* panel;
+
 	void onImport(wxCommandEvent& event);
 	void onBankCenter(wxCommandEvent& event);
 	void OnClose(wxCloseEvent& event);

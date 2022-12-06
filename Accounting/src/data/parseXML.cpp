@@ -9,6 +9,7 @@
 #include <wx/xml/xml.h>
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 #include "parseXML.hpp"
 
 #ifndef WX_PRECOMP
@@ -19,10 +20,24 @@
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 
 #endif
 
-static std::vector<wxString> parseXML(wxFileDialog iFile){
+wxString parseXML(wxFileDialog iFile){
 	wxXmlDocument xmlDoc;
+	wxString ret = "";
+
+
+	if (!xmlDoc.Load(iFile.GetPath()))
+		return ret;
+
+	if (xmlDoc.GetRoot() == nullptr)
+		return ret;
+
+	wxXmlNode* child = xmlDoc.GetRoot()->GetChildren();
+	while (child) {
+		ret += child->GetName();
+		child->GetNext();
+	}
 
 
 
-
+	return ret;
 }
