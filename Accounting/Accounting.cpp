@@ -83,7 +83,7 @@ MyFrame::MyFrame()
     //Addding menus to menuBars
     wxMenuBar* menuBar = new wxMenuBar; //delete ptr
 
-    menuBar->Append(menuFile, "&FIle");
+    menuBar->Append(menuFile, "&File");
     menuBar->Append(menuOptions, "&Accountant");
     menuBar->Append(menuEmployee, "&Employees");
     menuBar->Append(menuHelp, "&Help");

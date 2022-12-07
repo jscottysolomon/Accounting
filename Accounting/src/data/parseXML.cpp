@@ -20,12 +20,12 @@
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 
 #endif
 
-wxString parseXML(wxFileDialog iFile){
+wxString parseXML(wxFileDialog * iFile){
 	wxXmlDocument xmlDoc;
 	wxString ret = "";
 
 
-	if (!xmlDoc.Load(iFile.GetPath()))
+	if (!xmlDoc.Load(iFile->GetPath()))
 		return ret;
 
 	if (xmlDoc.GetRoot() == nullptr)

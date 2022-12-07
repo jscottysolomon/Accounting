@@ -42,7 +42,7 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 	menuBanking->AppendSeparator();
 	menuBanking->Append(ID_IMPORT, "Import File...\tCtrl-I");
 
-	wxMenuBar*  menuBar = new wxMenuBar;
+	wxMenuBar*  menuBar = new wxMenuBar();
 
 	menuBar->Append(menuBanking, "&Banking");
 
@@ -85,8 +85,6 @@ void companyMain::onImport(wxCommandEvent& event)
 	wxFileDialog * iFile = new wxFileDialog(this, "Select a file to import");
 	int ret = iFile->ShowModal();
 
-	//std::string ret = "";
-
 	wxTextCtrl* textBox = new wxTextCtrl(panel, wxID_ANY);
 	
 	if (ret == wxID_OK) {
@@ -123,14 +121,9 @@ void companyMain::onImport(wxCommandEvent& event)
 
 		textBox->AppendText(stmtrsChildren->GetName());
 
-
-
-		xmlDoc.Save(iFile->GetPath());
-		
 	}
-	//textBox->AppendText(iFile->GetPath());
-
 	iFile->Close();
+	delete iFile;
 }
 
 void companyMain::onBankCenter(wxCommandEvent& event) {
