@@ -88,38 +88,64 @@ void companyMain::onImport(wxCommandEvent& event)
 	wxTextCtrl* textBox = new wxTextCtrl(panel, wxID_ANY);
 	
 	if (ret == wxID_OK) {
-		std::string ret = "";
+		wxString ret = "";
 
 		wxXmlDocument xmlDoc;
 		xmlDoc.Load(iFile->GetPath());
 
 		if (xmlDoc.GetRoot()->GetName() != "OFX") {
-			ret = "";
-		}
+			//ret = wxEmptyString;
 
+		}
+		
 		//BANKMSGSRSV1
-		wxXmlNode* child = xmlDoc.GetRoot()->GetChildren();
-		child = child->GetNext();
+		wxXmlNode* bankMsg = xmlDoc.GetRoot()->GetChildren();
+		bankMsg = bankMsg->GetNext();
 
 		//STMTTRNRS
-		wxXmlNode* c = child->GetChildren();
+		wxXmlNode* stmTrnrs = bankMsg->GetChildren();
 
 		//stmtrs
-		wxXmlNode* transactions = c->GetChildren();
-		transactions = transactions->GetNext();
-		transactions = transactions->GetNext();
+		wxXmlNode* stmtrs = stmTrnrs->GetChildren();
+		stmtrs = stmtrs->GetNext();
+		stmtrs = stmtrs->GetNext();
 
 		//BANKTRANLIST
-		wxXmlNode* stmtrsChildren = transactions->GetChildren();
-		stmtrsChildren = stmtrsChildren->GetNext(); //bank info here <BANKACCTFROM>
-		stmtrsChildren = stmtrsChildren->GetNext();
+		wxXmlNode* bankTranList = stmtrs->GetChildren();
+		bankTranList = bankTranList->GetNext(); //bank info here <BANKACCTFROM>
+		bankTranList = bankTranList->GetNext();
 
-		wxXmlNode* bankListKids = stmtrsChildren->GetChildren();
-		bankListKids = bankListKids->GetNext();
-		bankListKids = bankListKids->GetNext();
+		wxXmlNode* stmTtrn = bankTranList->GetChildren();
+		stmTtrn = stmTtrn->GetNext();
+		stmTtrn = stmTtrn->GetNext();
 
+		wxXmlNode* data = stmTtrn->GetChildren();
 
-		textBox->AppendText(stmtrsChildren->GetName());
+		/*ret += data->GetNodeContent();
+		data = data->GetNext();
+		ret += data->GetNodeContent();
+		data = data->GetNext();
+		ret += data->GetNodeContent();
+		data = data->GetNext();
+
+		stmTtrn = stmTtrn->GetNext();
+		data = stmTtrn->GetChildren();
+		ret += data->GetNodeContent();
+		data = data->GetNext();*/
+
+		wxString test = "";
+
+		for(int ii = 0; ii < 4; ii++) {
+			for(int xx = 1; xx < 3; xx++) {
+				test += data->GetNodeContent();
+				data = data->GetNext();
+			}
+
+			stmTtrn = stmTtrn->GetNext();
+			data = stmTtrn->GetChildren();
+		}
+
+		textBox->AppendText(test);
 
 	}
 	iFile->Close();
