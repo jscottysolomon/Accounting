@@ -69,5 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Documents\Account_SQL.sql" />
+    <None Include="src\data\config.properties" />
   </ItemGroup>
 </Project>

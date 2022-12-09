@@ -119,30 +119,19 @@ void companyMain::onImport(wxCommandEvent& event)
 		stmTtrn = stmTtrn->GetNext();
 		stmTtrn = stmTtrn->GetNext();
 
-		wxXmlNode* data = stmTtrn->GetChildren();
-
-		/*ret += data->GetNodeContent();
-		data = data->GetNext();
-		ret += data->GetNodeContent();
-		data = data->GetNext();
-		ret += data->GetNodeContent();
-		data = data->GetNext();
-
-		stmTtrn = stmTtrn->GetNext();
-		data = stmTtrn->GetChildren();
-		ret += data->GetNodeContent();
-		data = data->GetNext();*/
+		wxXmlNode* data;
 
 		wxString test = "";
 
-		for(int ii = 0; ii < 4; ii++) {
-			for(int xx = 1; xx < 3; xx++) {
+				
+		while (stmTtrn) {
+			data = stmTtrn->GetChildren();
+			while (data) {
 				test += data->GetNodeContent();
 				data = data->GetNext();
 			}
-
+			test += stmTtrn->GetName();
 			stmTtrn = stmTtrn->GetNext();
-			data = stmTtrn->GetChildren();
 		}
 
 		textBox->AppendText(test);
@@ -150,6 +139,8 @@ void companyMain::onImport(wxCommandEvent& event)
 	}
 	iFile->Close();
 	delete iFile;
+	//wxXmlNode deletion is handled by wxWidgets library
+	//textbox is leaked, probably
 }
 
 void companyMain::onBankCenter(wxCommandEvent& event) {

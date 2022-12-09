@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Documents\Account_SQL.sql" />
+    <None Include="src\data\config.properties" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
