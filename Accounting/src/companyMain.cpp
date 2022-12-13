@@ -135,11 +135,12 @@ void companyMain::onImport(wxCommandEvent& event)
 		}
 
 		textBox->AppendText(test);
+		//wxXmlNode ptr deletion is handled by wxWidgets library
 
 	}
 	iFile->Close();
 	delete iFile;
-	//wxXmlNode deletion is handled by wxWidgets library
+	iFile = nullptr;
 	//textbox is leaked, probably
 }
 

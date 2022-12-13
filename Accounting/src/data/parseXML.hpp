@@ -2,7 +2,7 @@
 #ifndef PARSEXML_H
 #define PARSEXML_H
 
-wxString parseXML(wxFileDialog iFile);
+wxString parseXML(wxWindow* parent);
 #endif
 
 

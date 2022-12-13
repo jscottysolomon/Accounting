@@ -20,23 +20,58 @@
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 
 #endif
 
-wxString parseXML(wxFileDialog * iFile){
-	wxXmlDocument xmlDoc;
+wxString parseXML(wxWindow * parent){
+	wxFileDialog* iFile = new wxFileDialog(parent, "Select a file to import");
+	int ret = iFile->ShowModal();
+
 	wxString ret = "";
 
+	if (ret == wxID_OK) {
+		wxString ret = "";
 
-	if (!xmlDoc.Load(iFile->GetPath()))
-		return ret;
+		wxXmlDocument xmlDoc;
+		xmlDoc.Load(iFile->GetPath());
 
-	if (xmlDoc.GetRoot() == nullptr)
-		return ret;
+		if (xmlDoc.GetRoot()->GetName() != "OFX") {
+			//ret = wxEmptyString;
 
-	wxXmlNode* child = xmlDoc.GetRoot()->GetChildren();
-	while (child) {
-		ret += child->GetName();
-		child->GetNext();
+		}
+
+		//BANKMSGSRSV1
+		wxXmlNode* bankMsg = xmlDoc.GetRoot()->GetChildren();
+		bankMsg = bankMsg->GetNext();
+
+		//STMTTRNRS
+		wxXmlNode* stmTrnrs = bankMsg->GetChildren();
+
+		//stmtrs
+		wxXmlNode* stmtrs = stmTrnrs->GetChildren();
+		stmtrs = stmtrs->GetNext();
+		stmtrs = stmtrs->GetNext();
+
+		//BANKTRANLIST
+		wxXmlNode* bankTranList = stmtrs->GetChildren();
+		bankTranList = bankTranList->GetNext(); //bank info here <BANKACCTFROM>
+		bankTranList = bankTranList->GetNext();
+
+		wxXmlNode* stmTtrn = bankTranList->GetChildren();
+		stmTtrn = stmTtrn->GetNext();
+		stmTtrn = stmTtrn->GetNext();
+
+		wxXmlNode* data;
+
+
+
+		while (stmTtrn) {
+			data = stmTtrn->GetChildren();
+			while (data) {
+				ret += data->GetNodeContent();
+				data = data->GetNext();
+			}
+			ret += stmTtrn->GetName();
+			stmTtrn = stmTtrn->GetNext();
+		}
 	}
-
 
 
 	return ret;
