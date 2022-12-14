@@ -55,93 +55,18 @@ companyMain::companyMain(wxFrame* parent) : wxFrame(parent, wxID_ANY, "Accountin
 //Deconstructor
 companyMain::~companyMain()
 {
+	//Delets most raw pointers to wxWidget objects
 	Destroy();
+	//delete manuBar;
 }
 
-/**
-* On selecting an xml file to import, the file is parased
-* 
-* .QBO file struture to retrieve tranactions:
-* 
-* <OFX>
-*	<SIGNONMSGSRSV1>
-*	<BANKMSGSRSV1>
-*		<STMTRNRS>
-*		<STMTRS>
-*			<CURDEF>
-*			<BANKACCTFROM>
-*			<BANKTRANLIST>
-*				<DTSTART>
-*				<DTEND>
-*				<STMTTRN>
-*					<TRNTYPE>
-*					<DTPOSTED>
-*					<TRNAMT>
-*					<FITID>
-*					<MEMO>
-*/
+
 void companyMain::onImport(wxCommandEvent& event)
 {
-	wxFileDialog * iFile = new wxFileDialog(this, "Select a file to import");
-	int ret = iFile->ShowModal();
-
+	wxString retString = parseXML(this);
 	wxTextCtrl* textBox = new wxTextCtrl(panel, wxID_ANY);
-	
-	if (ret == wxID_OK) {
-		wxString ret = "";
-
-		wxXmlDocument xmlDoc;
-		xmlDoc.Load(iFile->GetPath());
-
-		if (xmlDoc.GetRoot()->GetName() != "OFX") {
-			//ret = wxEmptyString;
-
-		}
-		
-		//BANKMSGSRSV1
-		wxXmlNode* bankMsg = xmlDoc.GetRoot()->GetChildren();
-		bankMsg = bankMsg->GetNext();
-
-		//STMTTRNRS
-		wxXmlNode* stmTrnrs = bankMsg->GetChildren();
-
-		//stmtrs
-		wxXmlNode* stmtrs = stmTrnrs->GetChildren();
-		stmtrs = stmtrs->GetNext();
-		stmtrs = stmtrs->GetNext();
-
-		//BANKTRANLIST
-		wxXmlNode* bankTranList = stmtrs->GetChildren();
-		bankTranList = bankTranList->GetNext(); //bank info here <BANKACCTFROM>
-		bankTranList = bankTranList->GetNext();
-
-		wxXmlNode* stmTtrn = bankTranList->GetChildren();
-		stmTtrn = stmTtrn->GetNext();
-		stmTtrn = stmTtrn->GetNext();
-
-		wxXmlNode* data;
-
-		wxString test = "";
-
-				
-		while (stmTtrn) {
-			data = stmTtrn->GetChildren();
-			while (data) {
-				test += data->GetNodeContent();
-				data = data->GetNext();
-			}
-			test += stmTtrn->GetName();
-			stmTtrn = stmTtrn->GetNext();
-		}
-
-		textBox->AppendText(test);
-		//wxXmlNode ptr deletion is handled by wxWidgets library
-
-	}
-	iFile->Close();
-	delete iFile;
-	iFile = nullptr;
-	//textbox is leaked, probably
+	textBox->AppendText(retString);
+	//textbox is leaked, I think.
 }
 
 void companyMain::onBankCenter(wxCommandEvent& event) {

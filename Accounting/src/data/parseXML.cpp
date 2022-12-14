@@ -5,11 +5,11 @@
 
 #include <wx/wxprec.h>
 #include <list>
-#include <wx/string.h>
 #include <wx/xml/xml.h>
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <wx/string.h>
 #include "parseXML.hpp"
 
 #ifndef WX_PRECOMP
@@ -20,14 +20,35 @@
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 
 #endif
 
+/**
+* On selecting an xml file to import, the file is parased
+*
+* .QBO file struture to retrieve tranactions:
+*
+* <OFX>
+*	<SIGNONMSGSRSV1>
+*	<BANKMSGSRSV1>
+*		<STMTRNRS>
+*		<STMTRS>
+*			<CURDEF>
+*			<BANKACCTFROM>
+*			<BANKTRANLIST>
+*				<DTSTART>
+*				<DTEND>
+*				<STMTTRN>
+*					<TRNTYPE>
+*					<DTPOSTED>
+*					<TRNAMT>
+*					<FITID>
+*					<MEMO>
+*/
 wxString parseXML(wxWindow * parent){
 	wxFileDialog* iFile = new wxFileDialog(parent, "Select a file to import");
-	int ret = iFile->ShowModal();
+	int status = iFile->ShowModal();
+	wxString ret = wxEmptyString;
 
-	wxString ret = "";
-
-	if (ret == wxID_OK) {
-		wxString ret = "";
+	if (status == wxID_OK) {
+		ret = "";
 
 		wxXmlDocument xmlDoc;
 		xmlDoc.Load(iFile->GetPath());
@@ -71,8 +92,26 @@ wxString parseXML(wxWindow * parent){
 			ret += stmTtrn->GetName();
 			stmTtrn = stmTtrn->GetNext();
 		}
+
+		//dealocating memory
+		
+		
+		
+		
+		//delete stmTtrn;
+		//stmTtrn = nullptr;
+		/*delete bankTranList;
+		bankTranList = nullptr;
+		delete stmtrs;
+		stmtrs = nullptr;
+		delete stmTrnrs;
+		stmTrnrs = nullptr;
+		delete bankMsg;
+		bankMsg = nullptr;*/
 	}
 
-
+	iFile->Close();
+	delete iFile;
+	iFile = nullptr;
 	return ret;
 }
