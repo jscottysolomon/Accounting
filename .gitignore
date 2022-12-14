@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Config file
-Accounting/src/data/config.properties
+src/data/config.properties
