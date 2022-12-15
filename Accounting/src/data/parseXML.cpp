@@ -115,3 +115,11 @@ wxString parseXML(wxWindow * parent){
 	iFile = nullptr;
 	return ret;
 }
+
+boolean addRule(wxString identifier, wxString vendor, wxString category, bool universal) {
+
+}
+
+boolean addRule(wxString memo) {
+
+}
