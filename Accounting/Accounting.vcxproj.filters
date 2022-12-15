@@ -70,5 +70,6 @@
   <ItemGroup>
     <None Include="..\..\..\..\Documents\Account_SQL.sql" />
     <None Include="src\data\config.properties" />
+    <None Include="src\data\transactionRules.pl" />
   </ItemGroup>
 </Project>

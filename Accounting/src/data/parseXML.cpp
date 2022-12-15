@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <wx/string.h>
+#include <SWI-Prolog.h>
 #include "parseXML.hpp"
 
 #ifndef WX_PRECOMP
@@ -80,7 +81,6 @@ wxString parseXML(wxWindow * parent){
 		stmTtrn = stmTtrn->GetNext();
 
 		wxXmlNode* data;
-
 
 
 		while (stmTtrn) {
