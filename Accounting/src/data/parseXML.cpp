@@ -116,8 +116,12 @@ wxString parseXML(wxWindow * parent){
 	return ret;
 }
 
-boolean addRule(wxString identifier, wxString vendor, wxString category, bool universal) {
+boolean addRule(wxString identifier, wxString vendor, wxString category, int ein) {
+	//assumes vendor and category exist
 
+	if (ein == 0) {
+		//category()/4 applies to all EINs
+	}
 }
 
 boolean addRule(wxString memo) {
