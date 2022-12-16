@@ -92,22 +92,7 @@ wxString parseXML(wxWindow * parent){
 			ret += stmTtrn->GetName();
 			stmTtrn = stmTtrn->GetNext();
 		}
-
-		//dealocating memory
-		
-		
-		
-		
-		//delete stmTtrn;
-		//stmTtrn = nullptr;
-		/*delete bankTranList;
-		bankTranList = nullptr;
-		delete stmtrs;
-		stmtrs = nullptr;
-		delete stmTrnrs;
-		stmTrnrs = nullptr;
-		delete bankMsg;
-		bankMsg = nullptr;*/
+		//xmlDocument deletes all its xmlNode pointers when it goes out of scope
 	}
 
 	iFile->Close();
