@@ -13,6 +13,7 @@
 #include <SWI-Prolog.h>
 #include "parseXML.hpp"
 
+
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
@@ -86,10 +87,25 @@ wxString parseXML(wxWindow * parent){
 		while (stmTtrn) {
 			data = stmTtrn->GetChildren();
 			while (data) {
-				ret += data->GetNodeContent();
+				if (data->GetName() == "TRNTYPE") {
+					ret += data->GetNodeContent();
+				}
+				else if (data->GetName() == "DTPOSTED") {
+					ret += data->GetNodeContent();
+				}
+				else if (data->GetName() == "TRNAMT") {
+					ret += data->GetNodeContent();
+				}
+				else if (data->GetName() == "NAME") {
+					ret += data->GetNodeContent();
+				}
+				else {
+					//memo
+				}
+
 				data = data->GetNext();
 			}
-			ret += stmTtrn->GetName();
+			//ret += stmTtrn->GetName();
 			stmTtrn = stmTtrn->GetNext();
 		}
 		//xmlDocument deletes all its xmlNode pointers when it goes out of scope
@@ -107,8 +123,10 @@ boolean addRule(wxString identifier, wxString vendor, wxString category, int ein
 	if (ein == 0) {
 		//category()/4 applies to all EINs
 	}
+
+	return false;
 }
 
 boolean addRule(wxString memo) {
-
+	return false;
 }
