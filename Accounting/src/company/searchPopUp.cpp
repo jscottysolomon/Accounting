@@ -3,7 +3,7 @@
 #endif
 
 #include <wx/popupwin.h>
-#include "../../include/searchPopUp.h"
+#include "searchPopUp.h"
 
 
 searchPopUp::searchPopUp(wxWindow* parent, int flags) : wxPopupWindow() {

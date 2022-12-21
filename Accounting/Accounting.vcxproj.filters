@@ -41,7 +41,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Accounting.cpp">
+    <ClCompile Include="src\company\Accounting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\company\searchPopUp.cpp">

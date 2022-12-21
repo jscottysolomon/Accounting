@@ -4,36 +4,9 @@
 */
 
 #include <wx/wx.h>
+#include "Accounting.h"
+#include "companyMain.hpp"
 
-
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-
-#ifdef __WXMSW__
-#include <wx/msw/msvcrt.h>
-#endif
-
-//#include "Accounting.h"
-#include "../include/companyMain.hpp"
-
-class MyApp : public wxApp
-{
-public:
-    virtual bool OnInit();
-};
-
-class MyFrame : public wxFrame
-{
-public:
-    MyFrame();
-
-private:
-    void OnHello(wxCommandEvent& event);
-    void OnExit(wxCommandEvent& event);
-    void OnAbout(wxCommandEvent& event);
-    void OnOpen(wxCommandEvent& event);
-};
 
 enum
 {

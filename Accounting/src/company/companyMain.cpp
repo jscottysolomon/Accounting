@@ -4,8 +4,8 @@
 #include <string.h>
 #include <wx/string.h>
 #include <iostream>
-#include "../../include/parseXML.hpp"
-#include "../../include/companyMain.hpp"
+#include "parseXML.hpp"
+#include "companyMain.hpp"
 
 #ifdef __WXMSW__
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 

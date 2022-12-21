@@ -83,7 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SOCI_ROOT)\lib\Debug;$(SWI_PROLOG)\bin;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\libs\soci-master\include;C:\libs\soci-master\include\soci;C:\libs\soci-master\include\soci\mysql;$(SWI_PROLOG)\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\jscot\source\repos\Accounting\Accounting\include;C:\libs\soci-master\include;C:\libs\soci-master\include\soci;C:\libs\soci-master\include\soci\mysql;$(SWI_PROLOG)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -158,7 +158,7 @@
     <ClInclude Include="include\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Accounting.cpp" />
+    <ClCompile Include="src\company\Accounting.cpp" />
     <ClCompile Include="src\company\companyMain.cpp" />
     <ClCompile Include="src\data\parseXML.cpp" />
     <ClCompile Include="src\company\searchPopUp.cpp" />
