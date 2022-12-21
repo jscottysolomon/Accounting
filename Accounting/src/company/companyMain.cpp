@@ -1,15 +1,11 @@
-#include <wx/wxprec.h>
+#include <wx/wx.h>
 #include <vector>
 #include <wx/xml/xml.h>
 #include <string.h>
 #include <wx/string.h>
 #include <iostream>
-#include "data/parseXML.hpp"
-#include "companyMain.hpp" 
-
-#ifndef WX_PRECOMP
-#include <wx/wx.h>
-#endif
+#include "../../include/parseXML.hpp"
+#include "../../include/companyMain.hpp"
 
 #ifdef __WXMSW__
 #include <wx/msw/msvcrt.h>      // redefines the new() operator 

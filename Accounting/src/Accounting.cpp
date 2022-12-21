@@ -3,13 +3,9 @@
 * @version 1.0
 */
 
-#include <wx/wxprec.h>
-
-#ifndef WX_PRECOMP
 #include <wx/wx.h>
-#endif
 
-#include"src/companyMain.hpp"
+
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -18,6 +14,8 @@
 #include <wx/msw/msvcrt.h>
 #endif
 
+//#include "Accounting.h"
+#include "../include/companyMain.hpp"
 
 class MyApp : public wxApp
 {

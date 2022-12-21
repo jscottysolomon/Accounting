@@ -10,8 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <wx/string.h>
-#include <SWI-Prolog.h>
-#include "parseXML.hpp"
+//#include <SWI-Prolog.h>
+#include "../../include/parseXML.hpp"
 
 
 #ifndef WX_PRECOMP

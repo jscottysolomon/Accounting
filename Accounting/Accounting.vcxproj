@@ -149,19 +149,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Accounting.h" />
+    <ClInclude Include="include\Accounting.h" />
     <ClInclude Include="src\companyMain.hpp" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="src\data\parseXML.hpp" />
-    <ClInclude Include="src\searchPopUp.h" />
+    <ClInclude Include="include\parseXML.hpp" />
+    <ClInclude Include="include\searchPopUp.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Accounting.cpp" />
-    <ClCompile Include="src\companyMain.cpp" />
+    <ClCompile Include="src\Accounting.cpp" />
+    <ClCompile Include="src\company\companyMain.cpp" />
     <ClCompile Include="src\data\parseXML.cpp" />
-    <ClCompile Include="src\searchPopUp.cpp" />
+    <ClCompile Include="src\company\searchPopUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Accounting.rc" />
@@ -171,7 +171,6 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Documents\Account_SQL.sql" />
     <None Include="src\data\config.properties" />
     <None Include="src\data\transactionRules.pl" />
   </ItemGroup>

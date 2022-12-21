@@ -27,27 +27,27 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Accounting.h">
+    <ClInclude Include="include\Accounting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\searchPopUp.h">
+    <ClInclude Include="include\searchPopUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\companyMain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\data\parseXML.hpp">
+    <ClInclude Include="include\parseXML.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Accounting.cpp">
+    <ClCompile Include="src\Accounting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\searchPopUp.cpp">
+    <ClCompile Include="src\company\searchPopUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\companyMain.cpp">
+    <ClCompile Include="src\company\companyMain.cpp">
       <Filter>Source Files\Company</Filter>
     </ClCompile>
     <ClCompile Include="src\data\parseXML.cpp">
@@ -68,7 +68,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Documents\Account_SQL.sql" />
     <None Include="src\data\config.properties" />
     <None Include="src\data\transactionRules.pl" />
   </ItemGroup>
