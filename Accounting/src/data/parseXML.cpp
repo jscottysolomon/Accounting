@@ -3,14 +3,20 @@
 * @version 1.0
 */
 
-#include <wx/wxprec.h>
-#include <list>
-#include <wx/xml/xml.h>
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+
+#include <wx/wx.h>
+#include <wx/xml/xml.h>
 #include <wx/string.h>
-#include <SWI-Prolog.h>
+#include <wx/fileconf.h>
+
+#include <soci/soci.h>
+#include <soci/mysql/soci-mysql.h>
+
 #include "parseXML.hpp"
 
 /**
@@ -102,6 +108,8 @@ wxString parseXML(wxWindow * parent){
 		//xmlDocument deletes all its xmlNode pointers when it goes out of scope
 	}
 
+	addRule("", "", "", 0);
+
 	iFile->Close();
 	delete iFile;
 	iFile = nullptr;
@@ -109,14 +117,24 @@ wxString parseXML(wxWindow * parent){
 }
 
 boolean addRule(wxString identifier, wxString vendor, wxString category, int ein) {
-	//assumes vendor and category exist
+	//Reading config file
+	wxFileConfig config("config.properties");
 
-	//PlEngine engine(nullptr, nullptr);
+	//Retrieve information from config.properties
+	wxString host = config.Read("database.host");
+	wxString user = config.Read("database.user");
+	wxString password = config.Read("database.password");
+	wxString dbname = config.Read("database.dbname");
 
-	if (ein == 0) {
-		//category()/4 applies to all EINs
-	}
+	std::string host_str = host.ToStdString();
+	std::string user_str = user.ToStdString();
+	std::string password_str = password.ToStdString();
+	std::string dbname_str = dbname.ToStdString();
 
+	soci::session sql(soci::mysql, "host=" + host_str + " user=" + user_str + " password=" + password_str + " db=" + dbname_str);
+
+
+	sql.close();
 	return false;
 }
 
