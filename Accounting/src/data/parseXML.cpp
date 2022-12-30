@@ -10,17 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <wx/string.h>
-//#include <SWI-Prolog.h>
-#include "../../include/parseXML.hpp"
-
-
-#ifndef WX_PRECOMP
-#include <wx/wx.h>
-#endif
-
-#ifdef __WXMSW__
-#include <wx/msw/msvcrt.h>      // redefines the new() operator 
-#endif
+#include <SWI-Prolog.h>
+#include "parseXML.hpp"
 
 /**
 * On selecting an xml file to import, the file is parased
@@ -119,6 +110,8 @@ wxString parseXML(wxWindow * parent){
 
 boolean addRule(wxString identifier, wxString vendor, wxString category, int ein) {
 	//assumes vendor and category exist
+
+	//PlEngine engine(nullptr, nullptr);
 
 	if (ein == 0) {
 		//category()/4 applies to all EINs
