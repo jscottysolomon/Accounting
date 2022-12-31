@@ -39,6 +39,9 @@
     <ClInclude Include="include\parseXML.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\databaseConnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\company\Accounting.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files\Company</Filter>
     </ClCompile>
     <ClCompile Include="src\data\parseXML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\databaseConnection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

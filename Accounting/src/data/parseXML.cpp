@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 
 #include <wx/wx.h>
 #include <wx/xml/xml.h>
