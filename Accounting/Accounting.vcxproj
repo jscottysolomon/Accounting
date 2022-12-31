@@ -82,8 +82,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SOCI_ROOT)\lib\Debug;$(SWI_PROLOG)\bin;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\jscot\source\repos\Accounting\Accounting\include;C:\libs\soci-master\include;C:\libs\soci-master\include\soci;C:\libs\soci-master\include\soci\mysql;C:\Program Files\MySQL\MySQL Server 8.0\include;$(SWI_PROLOG)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Program Files\MySQL\Connector C++ 8.0\lib64\vs14;$(SOCI_ROOT)\lib\Debug;$(SWI_PROLOG)\bin;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\MySQL\Connector C++ 8.0\include;C:\Users\jscot\source\repos\Accounting\Accounting\include;C:\libs\soci-master\include;C:\Program Files\MySQL\MySQL Server 8.0\include;$(SWI_PROLOG)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -128,7 +128,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libsoci_core_4_1.lib;libsoci_empty_4_1.lib;libsoci_mysql_4_1.lib;soci_core_4_1.lib;soci_empty_4_1.lib;soci_mysql_4_1.lib;libswipl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libsoci_core_4_1.lib;libsoci_empty_4_1.lib;libsoci_mysql_4_1.lib;soci_core_4_1.lib;soci_empty_4_1.lib;soci_mysql_4_1.lib;libswipl.lib;mysqlcppconn8-static.lib;libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

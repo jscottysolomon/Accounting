@@ -131,10 +131,44 @@ boolean addRule(wxString identifier, wxString vendor, wxString category, int ein
 	std::string password_str = password.ToStdString();
 	std::string dbname_str = dbname.ToStdString();
 
-	soci::session sql(soci::mysql, "host=" + host_str + " user=" + user_str + " password=" + password_str + " db=" + dbname_str);
+	MYSQL* conn;
+	MYSQL_ROW row;
+	MYSQL_RES* res;
 
+	conn = mysql_init(0);
 
-	sql.close();
+	//conn = mysql_real_connect(conn,host_str,)
+
+	if (!mysql_real_connect(conn, host_str.c_str(), user_str.c_str(), password_str.c_str(), dbname_str.c_str(), 0, NULL, 0)) {
+		// Error handling
+		wxMessageBox("Failed to connect to the database!");
+		return false;
+	}
+
+	// Convert wxStrings to std::strings
+	std::string identifier_str = identifier.ToStdString();
+	std::string vendor_str = vendor.ToStdString();
+	std::string category_str = category.ToStdString();
+
+	// Escape special characters in the strings
+	char* identifier_escaped = new char[identifier_str.length() * 2 + 1];
+	mysql_real_escape_string(conn, identifier_escaped, identifier_str.c_str(), identifier_str.length());
+
+	char* vendor_escaped = new char[vendor_str.length() * 2 + 1];
+	mysql_real_escape_string(conn, vendor_escaped, vendor_str.c_str(), vendor_str.length());
+
+	char* category_escaped = new char[category_str.length() * 2 + 1];
+	mysql_real_escape_string(conn, category_escaped, category_str.c_str(), category_str.length());
+
+	// Create the query string
+	std::string query = "INSERT INTO rules (identifier, vendor, category, ein) VALUES ('" + std::string(identifier_escaped) + "', '" + std::string(vendor_escaped) + "', '" + std::string(category_escaped) + "', " + std::to_string(ein) + ")";
+
+	delete[] identifier_escaped;
+	delete[] vendor_escaped;
+	delete[] category_escaped;
+
+	mysql_close(conn);
+
 	return false;
 }
 
