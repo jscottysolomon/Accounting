@@ -1,10 +1,8 @@
-#pragma once
 #ifndef PARSEXML_H
 #define PARSEXML_H
 
 wxString parseXML(wxWindow* parent);
-boolean addRule(wxString identifier, wxString vendor, wxString category, int ein);
-boolean addRule(wxString memo);
+
 struct transactions {
 	wxString type;
 	int date;

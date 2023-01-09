@@ -150,7 +150,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\Accounting.h" />
-    <ClInclude Include="include\databaseConnection.h" />
     <ClInclude Include="src\companyMain.hpp" />
     <ClInclude Include="include\framework.h" />
     <ClInclude Include="include\parseXML.hpp" />
@@ -161,7 +160,6 @@
   <ItemGroup>
     <ClCompile Include="src\company\Accounting.cpp" />
     <ClCompile Include="src\company\companyMain.cpp" />
-    <ClCompile Include="src\data\databaseConnection.cpp" />
     <ClCompile Include="src\data\parseXML.cpp" />
     <ClCompile Include="src\company\searchPopUp.cpp" />
   </ItemGroup>
